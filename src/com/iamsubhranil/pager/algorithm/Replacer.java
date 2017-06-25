@@ -44,7 +44,7 @@ public abstract class Replacer {
             System.out.println(toPrint);
     }
 
-    abstract String getName();
+    protected abstract String getName();
 
     public void printStatistics() {
         System.out.println(getName() + " is in effect..");

@@ -17,7 +17,7 @@ public class LeastRecentlyUsed extends Replacer {
     }
 
     @Override
-    String getName() {
+    protected String getName() {
         return "Least Recently Used";
     }
 

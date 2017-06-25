@@ -17,7 +17,7 @@ public class FirstInFirstOut extends Replacer {
     }
 
     @Override
-    String getName() {
+    protected String getName() {
         return "First In First Out";
     }
 

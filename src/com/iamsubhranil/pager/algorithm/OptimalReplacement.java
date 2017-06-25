@@ -17,7 +17,7 @@ public class OptimalReplacement extends Replacer {
     }
 
     @Override
-    String getName() {
+    protected String getName() {
         return "Optimal Replacement";
     }
 
