@@ -1,9 +1,6 @@
 package com.iamsubhranil.pager;
 
-import com.iamsubhranil.pager.algorithm.FirstInFirstOut;
-import com.iamsubhranil.pager.algorithm.LeastRecentlyUsed;
-import com.iamsubhranil.pager.algorithm.OptimalReplacement;
-import com.iamsubhranil.pager.algorithm.Replacer;
+import com.iamsubhranil.pager.algorithm.*;
 import com.iamsubhranil.pager.core.Memory;
 
 import java.util.ArrayList;
@@ -19,7 +16,7 @@ public class Main {
         int count = 5000;
         Random r = new Random();
         while (count-- > 0)
-            references.add(r.nextInt(1000));
+            references.add(r.nextInt(10000));
 
         LeastRecentlyUsed lru = new LeastRecentlyUsed();
         startReplace(lru, references, ram);
@@ -34,6 +31,11 @@ public class Main {
         OptimalReplacement or = new OptimalReplacement(references);
         startReplace(or, references, ram);
         or.printStatistics();
+
+        ram.flush();
+        LeastFrequentlyUsed lfu = new LeastFrequentlyUsed();
+        startReplace(lfu, references, ram);
+        lfu.printStatistics();
     }
 
     private static void startReplace(Replacer algorithm, ArrayList<Integer> references, Memory ram) {
