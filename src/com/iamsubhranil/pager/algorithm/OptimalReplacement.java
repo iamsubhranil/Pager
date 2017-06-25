@@ -23,13 +23,17 @@ public class OptimalReplacement extends Replacer {
 
     @Override
     public void insert(int pageNo, Memory ram) {
+        print("Searching for page " + pageNo + "..");
         if (ram.containsFrame(pageNo)) {
             hit();
+            print("\tFound in RAM..");
         } else {
             miss();
             if (ram.hasFreeFrame()) {
                 ram.addFrame(pageNo);
+                print("\tAdded to a free frame..");
             } else {
+                print("\tFinding page with least future use..");
                 int maxDistance = 0;
                 int valueToReplace = 0;
                 int start = 0;
@@ -49,7 +53,9 @@ public class OptimalReplacement extends Replacer {
                     }
                     start++;
                 }
+                print("\tPage found : " + valueToReplace + " Minimum Distance : " + maxDistance);
                 ram.replaceFrame(valueToReplace, pageNo);
+                print("\tPage replaced successfully..");
             }
         }
         count++;
